@@ -42,6 +42,16 @@ class Product
      */
     private $category;
 
+    public function __toString()
+    {
+        if ($this->getCategory())
+            return $this->getName() . ' ('
+                . $this->getPrice() . '€, category "'
+                . $this->getCategory()->getName() . '")';
+        else
+            return '';
+    }
+
     /**
      * Get id
      *
@@ -99,5 +109,28 @@ class Product
     {
         return $this->price;
     }
-}
 
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Product
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}
